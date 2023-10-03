@@ -1,7 +1,6 @@
 import csv
-from AnalyzeSentimenteService import analyze_sentiment
+from Services.AnalyzeSentimenteService import analyze_sentiment
 from Classes.DataClass import DataClass
-
 
 
 with open('CSVs/InputData.csv', encoding='UTF-8') as file:
@@ -15,7 +14,6 @@ with open('CSVs/InputData.csv', encoding='UTF-8') as file:
         for result in doc_result:
             with open('CSVs/OutPutData.csv', 'a', newline='', encoding='UTF-8') as outPut_file:
                 writer = csv.writer(outPut_file, delimiter=',') 
-                writer.writerow([inputData.Id, inputData.Comment, inputData.Date,result.sentiment])
-
+                writer.writerow([inputData.Id, inputData.Comment, inputData.Date,result.sentiment,result.confidence_scores])
 
 
